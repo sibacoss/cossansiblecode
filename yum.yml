@@ -15,3 +15,16 @@
         name: php
         state: latest
 
+- name: starte the services
+  hosts: all
+  vars:
+    web_service: httpd
+    nfs_service: nfs-server
+    firewall_service: firewalld
+  tasks:
+    - name: starte and enable the {{ web_service }}
+      service:
+        name: "{{ web_service }}"
+        state: started
+        enabled: true
+
